@@ -1,2 +1,8 @@
-<%= @lists  %>
+<ul>
+<% @lists.each do |x|  %>
+  <%= link_to list_path(x) do %>
+    <li><%= x.name %><%= link_to "Burn it down", list_path(x), class: "btn btn-primary", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></li>
+  <% end %>
+<% end %>
+</ul>
 Pika~

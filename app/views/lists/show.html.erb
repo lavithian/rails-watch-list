@@ -1,6 +1,12 @@
-Pikachu show
+Pikachu show <br>
 <%= @list %>
-<%= link_to "Add movies", bookmarks_path(@list) %>
+<h2><%= @list.name %></h2><br>
+<% @list.movies.each do |movie| %>
+<li><%= movie.title %> <%= link_to "delete", bookmark_path(Bookmark.find_by(list: @list, movie: movie)), class: "btn btn-primary", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></li>
+<% end %>
+<%= link_to "Add movies", new_list_bookmark_path(@list) %>
+<br>
+
 
 
 Bookmark movies
